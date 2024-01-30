@@ -7,8 +7,8 @@ const NAV_BAR_WIDTH = "64px";
 const ASIDE_CHAT_WIDTH = "334px";
 const BOARD_CONTENT_CHAT_WIDTH = "726px";
 const ASIDE_INFO_WIDTH = "334px";
-const Height_Search = "64px"
-const Height_List = `calc(100vh - ${Height_Search})`
+const Height_Search = "64px";
+const Height_List = `calc(100vh - ${Height_Search})`;
 const theme = extendTheme({
   zalo: {
     navWidth: NAV_BAR_WIDTH,
@@ -17,7 +17,7 @@ const theme = extendTheme({
     boardContentChat: BOARD_CONTENT_CHAT_WIDTH,
 
     heightSearch: Height_Search,
-    heightList: Height_List
+    heightList: Height_List,
   },
   // palette: {
   //   primary: {
@@ -38,6 +38,13 @@ const theme = extendTheme({
       styleOverrides: {
         root: {
           textTransform: "none",
+        },
+      },
+    },
+    MuiCardHeader: {
+      styleOverrides: {
+        root: {
+          padding: "8px",
         },
       },
     },

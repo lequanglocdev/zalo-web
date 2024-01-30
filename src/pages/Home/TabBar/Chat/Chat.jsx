@@ -4,7 +4,7 @@ import Search from "./Search/Search";
 import ListUser from "./ListUser/ListUser";
 import theme from "../../../../theme";
 
-const ChatHome = () => {
+const ChatHome = ({ chat }) => {
   return (
     <Box
       sx={{
@@ -13,7 +13,7 @@ const ChatHome = () => {
       }}
     >
       <Search sx={{ height: (theme) => theme.zalo.heightSearch }} />
-      <ListUser sx={{ height: (theme) => theme.zalo.heightList }} />
+      <ListUser users={chat?.[0]?.users}/>;
     </Box>
   );
 };

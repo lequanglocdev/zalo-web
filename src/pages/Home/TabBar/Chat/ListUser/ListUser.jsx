@@ -1,11 +1,5 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
 
 // Tab
 import Tabs from "@mui/material/Tabs";
@@ -14,6 +8,13 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import User from "./User/User";
+
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import Avatar from "@mui/material/Avatar";
+import { red } from "@mui/material/colors";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const options = [
   "Đánh dấu tin nhắn đã đọc",
@@ -22,7 +23,8 @@ const options = [
 ];
 const ITEM_HEIGHT = 48;
 
-const ListUser = () => {
+const ListUser = ({ users }) => {
+  console.log("User",users)
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -36,11 +38,14 @@ const ListUser = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <Box
       sx={{
         width: "100%",
         height: (theme) => theme.zalo.heightList,
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Box
@@ -96,6 +101,24 @@ const ListUser = () => {
             </MenuItem>
           ))}
         </Menu>
+      </Box>
+
+      <Box
+        sx={{
+          p: "0 2px ",
+          m: "0 2px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 1,
+          overflow: "hidden",
+          overflowY: "auto",
+          "&::-webkit-scrollbar-thumb": { backgroundColor: "#b2bec3" },
+          "&::-webkit-scrollbar-thumb:hover": { backgroundColor: "#bfc2cf" },
+        }}
+      >
+        {users?.map((user) => (
+          <User key={user._id} user={user} />
+        ))}
       </Box>
     </Box>
   );
