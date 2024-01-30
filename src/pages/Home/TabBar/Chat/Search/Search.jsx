@@ -6,7 +6,8 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
-
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 const SearchStyle = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: 20,
@@ -76,10 +77,18 @@ const Search = () => {
           }}
         >
           <Box sx={{ paddingX: "10px" }}>
-            <PersonAddAltIcon />
+            <Tooltip title="Thêm bạn">
+              <IconButton>
+                <PersonAddAltIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
           <Box>
-            <GroupAddIcon />
+            <Tooltip title="Tạo nhóm chat">
+              <IconButton>
+                <GroupAddIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Box>
       </Toolbar>
@@ -88,4 +97,3 @@ const Search = () => {
 };
 
 export default Search;
-

@@ -7,7 +7,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import ChatHome from "./Chat/chat";
+import ChatHome from "./Chat/Chat";
 import PhoneBook from "./PhoneBook/PhoneBook";
 
 function TabPanel(props) {
@@ -41,7 +41,7 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const TabBar = () => {
+const TabBar = ({ message }) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (event, newValue) => {
@@ -100,10 +100,10 @@ const TabBar = () => {
         <Box sx={{ width: "100%" }}>
           <TabPanel value={value} index={0}></TabPanel>
           <TabPanel value={value} index={1}>
-            <ChatHome />
+            <ChatHome chat={message?.listUsers} />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <PhoneBook/>
+            <PhoneBook />
           </TabPanel>
         </Box>
       </Box>
