@@ -1,18 +1,25 @@
 import React from "react";
-import Container from "@mui/material/Container";
+import { Container as MuiContainer } from "@mui/material";
 import TabBar from "./TabBar/TabBar";
-import ContentChat from "./ContentChat/ContentChat";
+import Container from "./Container/Container";
 import { mockData } from "../../apis/mock-data";
+import { useState } from "react";
+
 const Home = () => {
+  const [selectedTabIndex, setSelectedTabIndex] = useState(1);
   return (
-    <Container
+    <MuiContainer
       disableGutters
       maxWidth={false}
       sx={{ height: "100vh", display: "flex" }}
     >
-      <TabBar message = {mockData?.message}/>
-      <ContentChat />
-    </Container>
+      <TabBar
+        message={mockData?.message}
+        selectedTabIndex={selectedTabIndex}
+        onTabChange={(index) => setSelectedTabIndex(index)}
+      />
+      <Container selectedTabIndex={selectedTabIndex} />
+    </MuiContainer>
   );
 };
 

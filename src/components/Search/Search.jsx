@@ -76,7 +76,7 @@ const Search = () => {
             alignItems: "center",
           }}
         >
-          <Box sx={{ paddingX: "10px" }}>
+          <Box sx={{  }}>
             <Tooltip title="Thêm bạn">
               <IconButton>
                 <PersonAddAltIcon />

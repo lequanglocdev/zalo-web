@@ -41,10 +41,11 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const TabBar = ({ message }) => {
+const TabBar = ({ message , selectedTabIndex, onTabChange}) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (event, newValue) => {
+    onTabChange(newValue)
     setValue(newValue);
   };
   return (
