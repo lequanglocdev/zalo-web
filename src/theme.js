@@ -1,23 +1,16 @@
-import { createTheme } from "@mui/material/styles";
-import { red } from "@mui/material/colors";
 import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 // Create a theme instance.
 
-const NAV_BAR_WIDTH = "64px";
-const ASIDE_CHAT_WIDTH = "334px";
-const BOARD_CONTENT_CHAT_WIDTH = "726px";
-const ASIDE_INFO_WIDTH = "334px";
-const Height_Search = "64px";
-const Height_List = `calc(100vh - ${Height_Search})`;
+const HEIGHT_SEARCH_TAB = "64px";
+const HEIGHT_LIST_TAB = `calc(100vh - ${HEIGHT_SEARCH_TAB})`;
+const WIDTH_CHAT_WIDTH = "334px";
+const WIDTH_CONTAINER_CHAT = `calc(100% - ${WIDTH_CHAT_WIDTH})`;
 const theme = extendTheme({
   zalo: {
-    navWidth: NAV_BAR_WIDTH,
-    asideChatWidth: ASIDE_CHAT_WIDTH,
-    asideInfoWidth: ASIDE_INFO_WIDTH,
-    boardContentChat: BOARD_CONTENT_CHAT_WIDTH,
-
-    heightSearch: Height_Search,
-    heightList: Height_List,
+    asideChatWidth: WIDTH_CHAT_WIDTH,
+    heightSearch: HEIGHT_SEARCH_TAB,
+    heightList: HEIGHT_LIST_TAB,
+    widthContainerChat: WIDTH_CONTAINER_CHAT,
   },
   // palette: {
   //   primary: {
