@@ -5,20 +5,48 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
+import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
+import Modal from "@mui/material/Modal";
+import Info from "../Modal/Info";
+import Logout from "../Modal/Logout";
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 const Profile = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    setOpenModal(false);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [openModal, setOpenModal] = React.useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = (event) => {
+    event.stopPropagation();
+    setOpenModal(false);
+  };
+
+  const [openModalLogout, setOpenModalLogout] = React.useState(false);
+  const handleOpenModalLogout = () => setOpenModalLogout(true);
+  const handleCloseModalLogout = (event) => {
+    event.stopPropagation();
+    setOpenModalLogout(false);
+  };
+
   return (
     <Box>
       {/*  Avata */}
@@ -44,32 +72,37 @@ const Profile = () => {
         MenuListProps={{
           "aria-labelledby": "basic-button-profile",
         }}
+        sx={{
+          "& .MuiMenu-paper": {
+            width: 300,
+          },
+          "& .MuiMenu-root": {
+            position: "absolute",
+            top: 0,
+          },
+        }}
       >
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
+        <Box sx={{ width: 300 }}>
+          <MenuItem onClick={handleClose}>
+            <Typography sx={{ fontWeight: "bold" }}>Lê Quang Lộc</Typography>
+          </MenuItem>
+          <Divider />
+          <MenuItem onClick={handleOpenModal}>
+            Hồ sơ của bạn
+            <Modal open={openModal} onClose={handleCloseModal}>
+              <Info handleCloseModal={handleCloseModal} />
+            </Modal>
+          </MenuItem>
+
+          <MenuItem onClick={handleClose}>Cài đặt</MenuItem>
+
+          <MenuItem onClick={handleOpenModalLogout}>
+            Đăng xuất
+            <Modal open={openModalLogout} onClose={handleCloseModalLogout}>
+              <Logout handleCloseModalLogout={handleCloseModalLogout} />
+            </Modal>
+          </MenuItem>
+        </Box>
       </Menu>
     </Box>
   );

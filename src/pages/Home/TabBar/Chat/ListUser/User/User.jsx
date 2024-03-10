@@ -11,6 +11,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+
 const options = [
   "Đánh dấu tin nhắn đã đọc",
   "Gửi tin đồng thời",
@@ -18,7 +19,7 @@ const options = [
 ];
 const ITEM_HEIGHT = 48;
 
-const User = ({user}) => {
+const User = ({ user }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -27,9 +28,16 @@ const User = ({user}) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  //---------------------------------
+
+  const handleClickCard = (event) => {
+    event.stopPropagation();
+    console.log("Tên của card:", user.name);
+  };
   return (
     <Box>
       <Card
+        onClick={handleClickCard}
         sx={{
           cursor: "pointer",
           boxShadow: "0 1px 1px rgba(0,0,0,0.15 )",

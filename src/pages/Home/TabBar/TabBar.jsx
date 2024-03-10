@@ -41,11 +41,11 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const TabBar = ({ message , selectedTabIndex, onTabChange}) => {
+const TabBar = ({ message, selectedTabIndex, onTabChange }) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (event, newValue) => {
-    onTabChange(newValue)
+    onTabChange(newValue);
     setValue(newValue);
   };
   return (
@@ -80,7 +80,15 @@ const TabBar = ({ message , selectedTabIndex, onTabChange}) => {
             justifyContent: "space-between",
           }}
         >
-          <Tab label={<Profile />} {...a11yProps(0)} />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Profile />
+          </Box>
 
           <Tab
             sx={{}}

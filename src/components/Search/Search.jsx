@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,6 +8,10 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import Modal from "@mui/material/Modal";
+
+import AddFriend from "../Modal/AddFriend";
+
 const SearchStyle = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: 20,
@@ -57,6 +61,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Search = () => {
+  const [openModalAddFriend, setOpenModalAddFriend] = React.useState(false);
+  const handleOpenModalAddFriend = () => setOpenModalAddFriend(true);
+  const handleCloseModalAddFriend = (event) => {
+    event.stopPropagation();
+    setOpenModalAddFriend(false);
+  };
   return (
     <Box>
       <Toolbar>
@@ -76,20 +86,33 @@ const Search = () => {
             alignItems: "center",
           }}
         >
-          <Box sx={{  }}>
-            <Tooltip title="Thêm bạn">
-              <IconButton>
-                <PersonAddAltIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
-          <Box>
-            <Tooltip title="Tạo nhóm chat">
-              <IconButton>
-                <GroupAddIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
+          <Tooltip title="Thêm bạn">
+            <IconButton>
+              <PersonAddAltIcon onClick={handleOpenModalAddFriend} />
+            </IconButton>
+            <Modal
+              open={openModalAddFriend}
+              onClose={handleCloseModalAddFriend}
+            >
+              <AddFriend
+                handleCloseModalAddFriend={handleCloseModalAddFriend}
+              />
+            </Modal>
+          </Tooltip>
+
+          <Tooltip title="Tạo nhóm chat">
+            <IconButton>
+              <GroupAddIcon />
+            </IconButton>
+            <Modal
+              open={openModalAddFriend}
+              onClose={handleCloseModalAddFriend}
+            >
+              <AddFriend
+                handleCloseModalAddFriend={handleCloseModalAddFriend}
+              />
+            </Modal>
+          </Tooltip>
         </Box>
       </Toolbar>
     </Box>

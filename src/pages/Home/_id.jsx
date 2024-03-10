@@ -18,7 +18,10 @@ const Home = () => {
         selectedTabIndex={selectedTabIndex}
         onTabChange={(index) => setSelectedTabIndex(index)}
       />
-      <Container selectedTabIndex={selectedTabIndex} />
+      <Container
+        message={mockData?.message}
+        selectedTabIndex={selectedTabIndex}
+      />
     </MuiContainer>
   );
 };
